@@ -19,7 +19,7 @@ async def on_ready():
 
 @client.command(pass_context=True)
 async def clear(ctx, amount=100,):
-      await ctx.channel.purge()
+      await ctx.channel.purge(limit = int(amount))
       await ctx.channel.send('Messages deleted!')
       
       
