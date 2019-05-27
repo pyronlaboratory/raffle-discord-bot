@@ -9,5 +9,11 @@ client = commands.Bot(command_prefix = '.')
 async def on_ready():
       print("Powering up the bot")
 
+@client.event
+async def on_message(message):
+      author = message.author
+      content = message.content
+      print("{} texted: {}".format(author, content))
+
 
 client.run(TOKEN)
