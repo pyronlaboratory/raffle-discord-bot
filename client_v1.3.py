@@ -28,5 +28,3 @@ async def echo(ctx, *args):
       await ctx.channel.send(output)
 
 client.run(TOKEN)
-           
-client.run(TOKEN)
