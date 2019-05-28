@@ -20,10 +20,14 @@ async def on_ready():
 @client.command(pass_context=True)
 async def logs(ctx, amount=100,):
       channel = ctx.message.channel
-      messages = []
       async for message in channel.history(limit=int(amount)):
-            messages.append(message)
-      await ctx.channel.send('Logs Collected ')
+            if message.content == "":
+                  list_data = message.embeds
+                  for data in list_data:
+                        print(data.fields)
+            else:
+                  print(message.content)
+      await ctx.channel.send('Logs Collected!')
       
       
 client.run(TOKEN)
