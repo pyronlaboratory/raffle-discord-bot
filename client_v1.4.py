@@ -21,11 +21,9 @@ async def on_ready():
 async def logs(ctx, amount=100,):
       channel = ctx.message.channel
       messages = []
-      print('Getting logs from {}'.format(last))
-      async for message in channel.history(limit=int(amount), after=last):
-            messages.append(message.content)
-            
-      print(messages)
+      async for message in channel.history(limit=int(amount)):
+            messages.append(message)
+      await ctx.channel.send('Logs Collected ')
       
       
 client.run(TOKEN)
