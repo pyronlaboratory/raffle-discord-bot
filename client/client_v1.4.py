@@ -4,6 +4,10 @@ from discord.ext import commands
 import datetime as dt
 from datetime import datetime
 
+'''
+log collection : channel.history()
+'''
+
 TOKEN = "?"
 
 #setting date configurations
@@ -18,18 +22,18 @@ async def on_ready():
 
 
 @client.command(pass_context=True)
-async def collect_application(ctx, amount=100,):
+async def collect_logs(ctx, amount=100,):
       channel = ctx.message.channel
-      async for message in channel.history(limit=int(amount)):
+      async for message in channel.history(limit=int(amount), after=last):
             
             if message.content == "":
                   list_data = message.embeds
                   for data in list_data:
-                        print(data.description)
+                        print(data.field)
             else:
                   print(message.content)
             
-      await ctx.channel.send('Applications Collected!')
+      await ctx.channel.send('Logs Collected!')
       
       
 client.run(TOKEN)
