@@ -21,6 +21,7 @@ async def on_message_delete(message):
       content = message.content
       channel = message.channel
       await channel.send('{} deleted this thread: {}'.format(author, content))
+      
 
 
 client.run(TOKEN)
