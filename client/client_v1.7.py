@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 
+'''
+embed message display
+'''
+
 TOKEN = "?"
 
 client = commands.Bot(command_prefix = '.')
