@@ -1,6 +1,11 @@
 import discord
 from discord.ext import commands
 
+'''
+async events
+class discord.Message : on_message and on_message_delete
+'''
+
 TOKEN = "?"
 
 client = commands.Bot(command_prefix = '.')
