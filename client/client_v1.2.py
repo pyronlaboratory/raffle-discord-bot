@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 
+'''
+configurable commands sent via on_message() event
+'''
+
 TOKEN = "?"
 
 client = commands.Bot(command_prefix = '.')
@@ -11,7 +15,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+      
       channel = message.channel
+      
       if message.content.startswith('.ping'):
             await channel.send('pong')
 
