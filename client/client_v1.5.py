@@ -4,6 +4,10 @@ from discord.ext import commands
 import datetime as dt
 from datetime import datetime
 
+'''
+clearing messages from channel - command usage (.clear)
+'''
+
 TOKEN = "?"
 
 #setting date configurations
@@ -16,11 +20,9 @@ client = commands.Bot(command_prefix = '.')
 async def on_ready():
       print("Powering up the bot")
 
-
 @client.command(pass_context=True)
 async def clear(ctx, amount=100,):
-      await ctx.channel.purge(limit = int(amount))
+      await ctx.channel.purge(limit = int(amount), after=last)
       await ctx.channel.send('Messages deleted!')
-      
       
 client.run(TOKEN)
