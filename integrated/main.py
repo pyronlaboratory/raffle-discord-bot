@@ -12,7 +12,7 @@ version: 1.0
 nature: private
 
 Ronnie's Creative Lab Inc:
-server invite: https://discord.gg/sUJvpj8
+server invite: **************
 
 '''
 
