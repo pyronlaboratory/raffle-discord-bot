@@ -1,5 +1,7 @@
 import json
 
+
+
 import discord
 from discord.ext import commands
 
@@ -16,19 +18,28 @@ server invite: https://discord.gg/sUJvpj8
 
 '''
 
-
-#loading token.json for discord bot
 TOKEN=""
 
+#loading token.json for discord bot
 with open('token.json') as json_file:  
     data = json.load(json_file)
-    TOKEN = data['TOKEN']
+    TOKEN = data['token']
 
-
-#setting date configurations
+#setting datetime configurations
 delta = dt.timedelta(hours=1)
 last = datetime.now() - delta
+#last = last.strftime("%Y-%m-%d %H:%M:%S")
 
+#store results
+def store_application(applications):
+    file=open("applications.txt", "a+")
+    file.write(applications)
+    file.close()
+
+def store_links(links):
+    file=open("links.txt","a+")
+    file.write(links)
+    file.close()
 
 client = commands.Bot(command_prefix='.')
 
@@ -37,34 +48,46 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name="Raffle"))
     print("Powering up the bot")
     print('\nBot_Name: {}\nBot_ID: {}\nConnected Servers: {}\n'.format(
-        client.user.name,  #Bot Name
-        client.user.id,         #Bot ID
+        client.user.name, #Bot Name
+        client.user.id, #Bot ID
         len(client.guilds))  #Number of servers currently connected to
     )
 
-
+@client.command()
+async def DM(message):
+    message = "This Message is sent via DM"
+    author=message.author
+    channel=message.channel
+    await channel.send(message)
+    
 @client.event
 async def on_message(message):
+    
+    global last
     channel = message.channel
 
-    if message.content.startswith('.collect_applications'):
-        async for message in channel.history(after=last):
+    if message.content.startswith('.collect_applications') and message.author is "Captain Hook#0000":
+        async for message in channel.history(before=last):
             if message.content == "":
                 application_form = message.embeds
                 for details in application_form:
-                    print(details.description)
+                    store_application(details.description)
+                    store_application("\n\n")
                     
         await channel.send('Applications Collected!')
         
     
-    if message.content.startswith('.collect_links'):
-        async for message in channel.history(after=last):
+    if message.content.startswith('.collect_links'):# and message.author is "Mr. Smee#0000":
+        print(message.author)
+        async for message in channel.history(before=last):
             if message.content == "":
                 posted_links = message.embeds
                 for link in posted_links:
-                    print(link.field)
-                    
+                    for field in link.fields:
+                        store_links(str(field))
+                        store_links("\n\n")
+                   
         await channel.send('Links Collected!')
-
-            
+    await client.process_commands(message)
+       
 client.run(TOKEN)
