@@ -1,7 +1,5 @@
 import json
 
-
-
 import discord
 from discord.ext import commands
 
@@ -28,14 +26,8 @@ with open('token.json') as json_file:
 #setting datetime configurations
 delta = dt.timedelta(hours=1)
 last = datetime.now() - delta
-#last = last.strftime("%Y-%m-%d %H:%M:%S")
 
 #store results
-def store_application(applications):
-    file=open("applications.txt", "a+")
-    file.write(applications)
-    file.close()
-
 def store_links(links):
     file=open("links.txt","a+")
     file.write(links)
@@ -53,31 +45,25 @@ async def on_ready():
         len(client.guilds))  #Number of servers currently connected to
     )
 
+
 @client.command()
-async def DM(message):
-    message = "This Message is sent via DM"
-    author=message.author
-    channel=message.channel
-    await channel.send(message)
+async def apply(ctx):
+    channel = ctx.message.author
+    embed_text = discord.Embed(
+            colour = discord.Colour.blue()
+    )
+    embed_text.add_field(name='Raffle Entrance', value="[Click me, I'll take you to the raffle fair!](https://localhost)", inline=False)
+    embed_text.set_footer(text='designed by www.ronnie94official.co.in')
+    await channel.send(embed=embed_text)
+    
     
 @client.event
 async def on_message(message):
     
     global last
-    channel = message.channel
-
-    if message.content.startswith('.collect_applications') and message.author is "Captain Hook#0000":
-        async for message in channel.history(before=last):
-            if message.content == "":
-                application_form = message.embeds
-                for details in application_form:
-                    store_application(details.description)
-                    store_application("\n\n")
-                    
-        await channel.send('Applications Collected!')
-        
+    channel = message.channel        
     
-    if message.content.startswith('.collect_links'):# and message.author is "Mr. Smee#0000":
+    if message.content.startswith('.collect_links') and message.author is "Mr. Smee#0000":
         print(message.author)
         async for message in channel.history(before=last):
             if message.content == "":
