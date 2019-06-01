@@ -50,6 +50,7 @@ async def on_ready():
 async def apply(ctx):
     channel = ctx.message.author
     embed_text = discord.Embed(
+            description = "Hi {}! We're so excited that you're entering in a raffle! Please follow the below link and fill up the form. We wish you good luck!".format(channel.mention),
             colour = discord.Colour.blue()
     )
     embed_text.add_field(name='Raffle Entrance', value="[Click me, I'll take you to the raffle fair!](https://localhost)", inline=False)
