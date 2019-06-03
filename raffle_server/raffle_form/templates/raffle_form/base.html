@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Raffle Entrance Form</title>
+
+	<!-- GoogleFonts -->
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Roboto+Slab&display=swap" rel="stylesheet">
+
+	<!-- Static CSS -->
+	<link rel="stylesheet" href="{% static 'raffle_form/styles/styles.css' %}">
+
+
+	<!-- Bootstrap CSS -->
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	
+	
+</head>
+
+<body>
+	<header>
+		<br>
+		<h1 align="center">Lets bake us some raffles now, shall we?</h1>
+		<br>
+	</header>
+	<div class="container-fluid">
+		<section>
+			
+			{% block content %}
+			{% endblock %}
+
+		</section>
+	</div>
+	<footer>
+		<hr>
+		<h4> Designed by: www.ronnie94official.co.in - Copyrights © 2019</h4>
+		</hr>
+		<br>
+		<br>
+	</footer>
+	
+</body>
+
+</html>
