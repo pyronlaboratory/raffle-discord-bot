@@ -16,11 +16,11 @@
 							<a class="close font-weight-normal initialism" data-dismiss="alert" href="#"></a>Please do not refresh the page, this page uses secured connection mechanism to encrypt the payment information on the network. We request you to wait a few seconds after clicking on 'Proceed'</div>
 						<div class="form-group">
 							<label for="cc_name">Card Holder's Name</label>
-							<input type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required">
+							<input name="cardname" type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required">
 						</div>
 						<div class="form-group">
 							<label>Card Number</label>
-							<input type="text" class="form-control" autocomplete="on" maxlength="20" pattern="\d{16}" title="Credit card number" required="">
+							<input name="cardnumber" type="text" class="form-control" autocomplete="on" maxlength="20" pattern="\d{16}" title="Credit card number" required="">
 						</div>
 						<div class="form-group row">
 							<label class="col-md-12">Card Exp. Date</label>
@@ -52,7 +52,7 @@
 								</select>
 							</div>
 							<div class="col-md-4">
-								<input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" placeholder="CVC">
+								<input name="cvc" type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" placeholder="CVC">
 							</div>
 						</div>
 						<hr>
