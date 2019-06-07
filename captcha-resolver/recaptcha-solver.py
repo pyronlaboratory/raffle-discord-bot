@@ -12,6 +12,9 @@ import speech_recognition as sr
 # Selenium
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 
 # check if using python 3
@@ -20,7 +23,7 @@ if sys.version_info[0] > 3:
 
 # Firefox / Gecko Driver Related
 FIREFOX_BIN_PATH = r"C:/Program Files/Mozilla Firefox/firefox.exe"
-GECKODRIVER_BIN = r"C:/<users>/geckodriver.exe"
+#GECKODRIVER_BIN = r"C:/<users>/geckodriver.exe"
 
 # Randomization Related
 MIN_RAND        = 0.64
@@ -28,11 +31,11 @@ MAX_RAND        = 1.27
 LONG_MIN_RAND   = 4.78
 LONG_MAX_RAND   = 11.1
 
-NUMBER_OF_ITERATIONS = 100
-RECAPTCHA_PAGE_URL = "https://www.google.com/recaptcha/api2/demo"
+NUMBER_OF_ITERATIONS = 1
+RECAPTCHA_PAGE_URL = "https://tres-bien.com/nike-air-1-fear-of-god-sail-ar4237-100-fw19"
 
-HOUNDIFY_CLIENT_ID =  "{HOUNDIFY_CLIENT_ID}"
-HOUNDIFY_CLIENT_KEY = "{HOUNDIFY_CLIENT_KEY}"
+HOUNDIFY_CLIENT_ID =  "8A5KR4D-n9B0cmBbQzSFWw=="
+HOUNDIFY_CLIENT_KEY = "8wsS9JvsnhSj47hyJWkNDvK1W3f0me_pKrvQqvZoYsh6hUfjAv4QMXyv9b2P0c8SLGFC9MIVZoMwbERg0cdJrw=="
 
 DIGITS_DICT = {
                 "zero": "0",
@@ -49,8 +52,15 @@ DIGITS_DICT = {
                 
 class rebreakcaptcha(object):
     def __init__(self):
-        os.environ["PATH"] += os.pathsep + GECKODRIVER_BIN
+        #os.environ["PATH"] += os.pathsep + GECKODRIVER_BIN
         self.driver = webdriver.Firefox(firefox_binary=FirefoxBinary(FIREFOX_BIN_PATH))
+        #profile = webdriver.FirefoxProfile()
+        #profile.set_preference("network.proxy.type", 1)
+        #profile.set_preference("network.proxy.http", IP_ADDRESS)
+        #profile.set_preference("network.proxy.type", PORT)
+        #profile.update_preferences()
+
+        #self.driver = webdriver.Firefox(firefox_profile=profile)
         
     def is_exists_by_xpath(self, xpath):
         try:
@@ -62,6 +72,7 @@ class rebreakcaptcha(object):
     def get_recaptcha_challenge(self):
         while 1:
             # Navigate to a ReCaptcha page
+            self.driver.get(RECAPTCHA_PAGE_URL)
             self.driver.get(RECAPTCHA_PAGE_URL)
             time.sleep(random.uniform(MIN_RAND, MAX_RAND))
             
@@ -78,8 +89,16 @@ class rebreakcaptcha(object):
                 continue
             
             # Click on ReCaptcha checkbox
-            self.driver.find_element_by_xpath('//div[@class="recaptcha-checkbox-checkmark" and @role="presentation"]').click()
-            time.sleep(random.uniform(LONG_MIN_RAND, LONG_MAX_RAND))
+            clicked = False
+            while clicked:
+                try:
+                    self.driver.find_element_by_xpath('//div[@class="recaptcha-checkbox-checkmark" and @role="presentation"]').click()
+                except WebDriverException:
+                    continue
+                finally:
+                    clicked = True
+                    time.sleep(random.uniform(LONG_MIN_RAND, LONG_MAX_RAND))
+
         
             # Check if the ReCaptcha has no challenge
             if self.is_exists_by_xpath('//span[@aria-checked="true"]'):
