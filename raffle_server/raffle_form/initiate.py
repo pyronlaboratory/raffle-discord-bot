@@ -1,2 +1,13 @@
-def raffle(firstname,lastname,email,phone,address,city,zipcode,state,country,raffle,threads,api_key,cardname,cardnumber,cc_exp_mo,cc_exp_yr,cvc):
-	print(firstname,lastname,email,phone,address,city,zipcode,state,country,raffle,threads,api_key,cardname,cardnumber,cc_exp_mo,cc_exp_yr,cvc)
+from . import tresbien
+
+
+def raffle(**data):
+	
+#	print("\nData type of argument:",type(data))
+
+	for key, value in data.items():
+		if key == "raffle" and value == "tresbien":
+			print("Initiate tresbien.py")
+			tresbien.main(tresbien=data)
+
+

@@ -1,7 +1,5 @@
-{% extends 'raffle_form/base.html' %}
-
-{% block content %}
-<form role="form" action="{% url 'payment' %}" method="post" validate>{% csrf_token %}
+{% extends 'raffle_form/base.html' %} {% block content %}
+<form role="form" action="{% url 'thankyou' %}" method="post" validate>{% csrf_token %}
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<div class="row setup-content" id="step-2">
@@ -12,11 +10,28 @@
 				<div class="form-group row">
 					<label class="col-md-12">Select Your Raffle!</label>
 					<div class="col-md-12">
-						<select class="form-control" name="raffle" size="0">
-							<option href="https://localhost:8000/profile">Tres Bien</option>
-							<option value="one-block-down">One Block Down</option>
-							<option value="foot-patrol">Foot Patrol</option>
+						<select class="form-control" name="shoe_size" size="0" required="required">
+							<option value="4">4</option>
+							<option value="4.5">4.5</option>
+							<option value="5">5</option>
+							<option value="5.5">5.5</option>
+							<option value="6">6</option>
+							<option value="6.5">6.5</option>
+							<option value="7">7</option>
+							<option value="7.5">7.5</option>
+							<option value="8">8</option>
+							<option value="8.5">8.5</option>
+							<option value="9">9</option>
+							<option value="9.5">9.5</option>
+							<option value="10">10</option>
+							<option value="10.5">10.5</option>
+							<option value="11">11</option>
+							<option value="11.5">11.5</option>
+							<option value="12">12</option>
+							<option value="12.5">12.5</option>
+							<option value="13">13</option>
 						</select>
+						<small class="text-muted"> US Size* </small>
 					</div>
 				</div>
 				<div class="form-group">
@@ -40,5 +55,4 @@
 		<!-- End of Step-2 -->
 	</div>
 	<div class="col-md-3"></div>
-</form>
-{% endblock %}
+</form>{% endblock %}

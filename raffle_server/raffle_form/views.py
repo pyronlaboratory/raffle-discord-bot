@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from . import initiate 
 
+# variables
+raffle = ""
 firstname = ""
 lastname = ""
 email = ""
+instagram = ""
 phone = ""
 address = ""
 city = ""
@@ -22,7 +25,66 @@ cvc = ""
 
 # Create your views here.
 def index(request):
-	return render(request, 'raffle_form/raffleform.html')
+
+	return render(request, 'raffle_form/index.html')
+
+def profile_tres_bien(request):
+
+	global raffle
+
+	raffle = "tresbien"
+
+	return render(request, 'raffle_form/tresbien_raffleform.html')
+
+def preferences_tres_bien(request):
+
+	global firstname,lastname,email,phone,address,city,zipcode,state,country
+
+	firstname = request.POST.get('firstname')
+	lastname = request.POST.get('lastname')
+	email = request.POST.get('email')
+	instagram = request.POST.get('instagram')
+	phone = request.POST.get('phone')
+	address = request.POST.get('address')
+	city = request.POST.get('city')
+	zipcode = request.POST.get('zipcode')
+	state = request.POST.get('state')
+	country = request.POST.get('country')
+
+	return render(request, 'raffle_form/tresbien_preferences.html')
+
+def thankyou_tres_bien(request):
+
+	global raffle,shoe_size,threads,api_key
+
+	shoe_size = request.POST.get('shoe_size')
+	api_key = request.POST.get('api_key')
+	threads = request.POST.get('threads')
+
+
+	initiate.raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		phone=phone,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+	
+
+	return render(request, 'raffle_form/tresbien_thankyou.html')
+
+def profile_a_few_store(request):
+	return render(request, 'raffle_form/afewstore_raffleform.html')
+
+def preferences_a_few_store(request):
+	return render(request, 'raffle_form/afewstore_preferences.html')
 
 def preferences(request):
 

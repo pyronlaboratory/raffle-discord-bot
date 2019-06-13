@@ -1,7 +1,5 @@
-{% extends 'raffle_form/base.html' %}
-
-{% block content %}
-<form role="form" action="{% url 'payment' %}" method="post" validate>{% csrf_token %}
+{% extends 'raffle_form/base.html' %} {% block content %}
+<form role="form" action="{% url 'thankyou_tres_bien' %}" method="post" validate>{% csrf_token %}
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<div class="row setup-content" id="step-2">
@@ -10,14 +8,24 @@
 				<br>
 				<br>
 				<div class="form-group row">
-					<label class="col-md-12">Select Your Raffle!</label>
+					
+					<label class="col-md-12">Select Your Shoe size!</label>
+
 					<div class="col-md-12">
-						<select class="form-control" name="raffle" size="0">
-							<option href="https://localhost:8000/profile">Tres Bien</option>
-							<option value="one-block-down">One Block Down</option>
-							<option value="foot-patrol">Foot Patrol</option>
+						<select class="form-control" name="shoe_size" size="0" required="required">
+							<option value="US_8">US 8</option>
+							<option value="US_8,5">US 8.5</option>
+							<option value="US_9">US 9</option>
+							<option value="US_9,5">US 9.5</option>
+							<option value="US_10">US 10</option>
+							<option value="US_10,5">US 10.5</option>
+							<option value="US_11">US 11</option>
+							<option value="US_11,5">US 11.5</option>
+							<option value="US_12">US 12</option>
 						</select>
+						<small class="text-muted"> US 8 equals UK 7 / EU 41 </small>
 					</div>
+
 				</div>
 				<div class="form-group">
 					<label class="control-label">We're expecting you to have a 2Captcha key!</label>
@@ -40,5 +48,4 @@
 		<!-- End of Step-2 -->
 	</div>
 	<div class="col-md-3"></div>
-</form>
-{% endblock %}
+</form>{% endblock %}
