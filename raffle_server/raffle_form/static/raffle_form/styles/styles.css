@@ -5,7 +5,7 @@ header {
 }
 
 .container-fluid {
-	background: url('../images/motion-dave-whyte-03.gif') fixed no-repeat;
+	background: url('../images/image-background.jpg') fixed no-repeat;
   	/* Center and scale the image nicely */
   	background-position: bottom right;
   	background-size: 38%;
