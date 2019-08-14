@@ -1,0 +1,194 @@
+{% extends 'raffle_form/base_2.html' %} {% block content %}
+<form role="form" action="{% url 'thankyou_shinzo_paris' %}" method="post" validate>{% csrf_token %}
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<div class="row setup-content" id="step-1">
+			<div class="col-md-12">
+				<br>
+				<br>
+				<h3> Lets fill up your profile first...</h3>
+				<br>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label class="control-label">Can we have your first name?</label>
+						<input name="firstname" maxlength="100" type="text" class="form-control" required="required" placeholder="Enter First Name" />
+					</div>
+					<div class="col-md-6">
+						<label class="control-label">What is your family name?</label>
+						<input name="lastname" maxlength="100" type="text" class="form-control" required="required" placeholder="Enter Last Name" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Do you have a gmail account or a catchall email address?</label>
+					<input name="email" maxlength="100" type="email" required="required" class="form-control" placeholder="Enter Email" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">Whats your instagram handle?</label>
+					<input name="instagram" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Instagram Username" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">How do we reach you?</label>
+					<input name="phone" maxlength="12" type="tel" required="required" class="form-control" placeholder="Enter Phone Number" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">Where do you stay?</label>
+					<input name="address" required="required" class="form-control" placeholder="Enter your address">
+					</textarea>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label class="control-label">Which city do you represent?</label>
+						<input name="city" maxlength="50" type="text" class="form-control" required="required" placeholder="Enter City Name" />
+					</div>
+					<div class="col-md-6">
+						<label class="control-label">What is your area code?</label>
+						<input name="zipcode" maxlength="10" type="text" class="form-control" required="required" placeholder="Enter Zipcode" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label class="control-label">What state do you belong to?</label>
+						<input name="state" maxlength="50" type="text" class="form-control" placeholder="Enter State Name" />
+					</div>
+					<div class="col-md-6">
+						<label class="col-md-12">What is your nationality?</label>
+						<select class="form-control" required="required" name="country" size="0">
+							<option value="">Enter Your Country</option>
+							<option value="Australia" selected="">Australia</option>
+							<option value="Austria">Austria</option>
+							<option value="Bahrain">Bahrain</option>
+							<option value="Belarus">Belarus</option>
+							<option value="Belgium">Belgium</option>
+							<option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
+							<option value="Brunei">Brunei</option>
+							<option value="Bulgaria">Bulgaria</option>
+							<option value="Canada">Canada</option>
+							<option value="China">China</option>
+							<option value="Croatia">Croatia</option>
+							<option value="Cyprus">Cyprus</option>
+							<option value="Czech Republic">Czech Republic</option>
+							<option value="Denmark">Denmark</option>
+							<option value="Estonia">Estonia</option>
+							<option value="Finland">Finland</option>
+							<option value="France">France</option>
+							<option value="Georgia">Georgia</option>
+							<option value="Germany">Germany</option>
+							<option value="Gibraltar">Gibraltar</option>
+							<option value="Greece">Greece</option>
+							<option value="Guernsey">Guernsey</option>
+							<option value="Hong Kong SAR China">Hong Kong SAR China</option>
+							<option value="Hungary">Hungary</option>
+							<option value="Iceland">Iceland</option>
+							<option value="India">India</option>
+							<option value="Indonesia">Indonesia</option>
+							<option value="Ireland">Ireland</option>
+							<option value="Isle of Man">Isle of Man</option>
+							<option value="Israel">Israel</option>
+							<option value="Italy">Italy</option>
+							<option value="Japan">Japan</option>
+							<option value="Jersey">Jersey</option>
+							<option value="Jordan">Jordan</option>
+							<option value="Kuwait">Kuwait</option>
+							<option value="Laos">Laos</option>
+							<option value="Latvia">Latvia</option>
+							<option value="Lebanon">Lebanon</option>
+							<option value="Lithuania">Lithuania</option>
+							<option value="Luxembourg">Luxembourg</option>
+							<option value="Macau SAR China">Macau SAR China</option>
+							<option value="Malaysia">Malaysia</option>
+							<option value="Malta">Malta</option>
+							<option value="Monaco">Monaco</option>
+							<option value="Netherlands">Netherlands</option>
+							<option value="New Zealand">New Zealand</option>
+							<option value="Nigeria">Nigeria</option>
+							<option value="Norway">Norway</option>
+							<option value="Philippines">Philippines</option>
+							<option value="Poland">Poland</option>
+							<option value="Portugal">Portugal</option>
+							<option value="Qatar">Qatar</option>
+							<option value="Romania">Romania</option>
+							<option value="Russia">Russia</option>
+							<option value="Saudi Arabia">Saudi Arabia</option>
+							<option value="Serbia">Serbia</option>
+							<option value="Singapore">Singapore</option>
+							<option value="Slovakia">Slovakia</option>
+							<option value="Slovenia">Slovenia</option>
+							<option value="South Africa">South Africa</option>
+							<option value="South Korea">South Korea</option>
+							<option value="Spain">Spain</option>
+							<option value="Sweden">Sweden</option>
+							<option value="Switzerland">Switzerland</option>
+							<option value="Taiwan">Taiwan</option>
+							<option value="Thailand">Thailand</option>
+							<option value="Turkey">Turkey</option>
+							<option value="U.S. Outlying Islands">U.S. Outlying Islands</option>
+							<option value="U.S. Virgin Islands">U.S. Virgin Islands</option>
+							<option value="Ukraine">Ukraine</option>
+							<option value="United Arab Emirates">United Arab Emirates</option>
+							<option value="United Kingdom">United Kingdom</option>
+							<option value="United States">United States</option>
+							<option value="Vietnam">Vietnam</option>
+						</select>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+		<!-- End of Step-1 -->
+		<div class="row setup-content" id="step-2">
+			<div class="col-md-12">
+				<h3> Set your perferences for the raffe..</h3>
+				<br>
+				<br>
+				<div class="form-group row">
+					<label class="col-md-12">What shoe size do you prefer?</label>
+					<div class="col-md-12">
+						<select class="form-control" name="shoe_size" size="0" required="required">
+							<option value="">Please select...</option>
+							<option value="3.5">3.5</option>
+							<option value="4">4</option>
+							<option value="4.5">4.5</option>--&gt;
+							<option value="5">5</option>
+							<option value="5.5">5.5</option>
+							<option value="6">6</option>
+							<option value="6.5">6.5</option>
+							<option value="7">7</option>
+							<option value="7.5">7.5</option>
+							<option value="8">8</option>
+							<option value="8.5">8.5</option>
+							<option value="9">9</option>
+							<option value="9.5">9.5</option>
+							<option value="10">10</option>
+							<option value="10.5">10.5</option>
+							<option value="11">11</option>
+							<option value="11.5">11.5</option>
+							<option value="12">12</option>
+							<option value="12.5">12.5</option>
+							<option value="13">13</option>
+							<option value="13.5">13.5</option>
+							<option value="14">14</option>
+						</select>	<small class="text-muted"> US footwear size* </small>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">We're expecting you to have a 2Captcha key!</label>
+					<input name="api_key" maxlength="40" type="text" required="required" class="form-control" placeholder="Enter 2Captcha API Key" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">How many threads you wish to run? We suggest you to keep the count below 20.</label>
+					<input name="threads" maxlength="2" type="text" required="required" class="form-control" placeholder="Enter number of entries you want to create" />
+				</div>
+				<br>
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<button class="btn btn-primary nextBtn btn-md btn-block" align="center" type="submit">Lock my preferences!</button>
+					<br>
+					<br>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+		<!-- End of Step-2 -->
+	</div>
+	<div class="col-md-3"></div>
+</form>{% endblock %}

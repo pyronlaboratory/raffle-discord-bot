@@ -1,4 +1,5 @@
 {% load static %}
+{% load sass_tags %}
 <!doctype html>
 <html lang="en">
 
@@ -6,51 +7,77 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
 	<title>Raffle Entrance Form</title>
 	<!-- GoogleFonts -->
 	<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Roboto+Slab&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+
 	<!-- Static CSS -->
 	<link rel="stylesheet" href="{% static 'raffle_form/styles/styles.css' %}">
-	<!-- Bootstrap CSS -->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<!-- Bootstrap CSS 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% sass_src 'demo.scss' %}" rel="stylesheet" type="text/css" />
+	
+
+	<!-- Datepicker libraries -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" rel="stylesheet">
+
 </head>
 
 <body>
 	<header>
 		<br>
-		<h1 align="center">Thank you for using our services!</h1>
 		<br>
-	</header>
-	<div class="container-fluid">
-		<section>
-			<br>
-			<br>
-			<h3>You're details are currently being processed on the backend. You'd receive a confirmation email soon on your registered email address..</h3>
-			<br>
-			<br>
-			<h3> We wish you good luck for the raffle!</h3>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-		</section>
-	</div>
-	<footer navbar-fixed-bottom>
+		<h2 align="center">Thank you for using our services!</h2>
+		<br>
+		<h5>You're details are currently being processed on the backend.</h5><h5> You'd receive a confirmation email soon on your registered email address..</h5>
+		<br>
+		<h5> We wish you good luck for the raffle!</h5>
+		<br>
+		<div align="center">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
 		<hr>
-		<h5> - Designed by: www.ronnie94official.co.in -</h5>
-		<h5> Copyrights © 2019 </h5>
-		</hr>
+		<h6> BeeNotify :: Get your premium membership on the official Discord Channel</h6>
 		<br>
-		<br>
-	</footer>
+		<h6> Designed by: <a href="www.ronnie94official.co.in" style="color:#282828;">www.ronnie94official.co.in</a></h6>
+		<h6> Copyrights © 2019 </h6>
+		</div>
+		<div class="col-md-3"></div>
+		</div>
+	</header>
+	<div class="wrap">
+	<div class="wrap2">
+		<div class="body"></div>
+		<div class="wing1"></div>
+		<div class="wing2"></div>
+		<div class="stinger"></div>
+		<div class="eyes">
+			<div class="pupil"></div>
+		</div>
+	</div>
+	<div class="cloud1"></div>
+	<div class="cloud2"></div>
+	<div class="cloud3"></div>
+
+	<div class="debri1"></div>
+	<div class="debri2"></div>
+	<div class="debri3"></div>
+	<div class="debri4"></div>
+	<div class="debri5"></div>
+	<div class="debri6"></div>
+	</div>
+	
 </body>
 
 </html>

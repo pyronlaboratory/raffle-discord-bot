@@ -1,52 +1,216 @@
+import json
+
 from django.shortcuts import render
 from . import initiate 
-
-# variables
-raffle = ""
-firstname = ""
-lastname = ""
-email = ""
-paypal_email = ""
-instagram = ""
-phone_prefix = ""
-phone = ""
-address = ""
-street1 = ""
-street2 = ""
-zipcode = ""
-county = ""
-city = ""
-state = ""
-country = ""
-raffle = ""
-api_key = ""
-threads = ""
-cardname = ""
-cardnumber = ""
-cc_exp_mo = ""
-cc_exp_yr = ""
-cvc = ""
+from .models import Raffle
 
 
 # Create your views here.
 def index(request):
+        features=[]
+        with open(r"C:\Users\AYUSH\Desktop\Ronnie\python\discord-raffle-bot\raffle_server\raffle_form\scripts\tools\config\urls.json") as json_file: # update address on production server
+                url_dictionary = json.load(json_file)
+                for raffle in url_dictionary:
+                	features.append(url_dictionary[raffle]['shoe'])
 
-	return render(request, 'raffle_form/index.html')
+
+
+        return render(request, 'raffle_form/index.html', {"features":features})
+
+
+
 
 
 # tresbien views
 def profile_tres_bien(request):
-
-	global raffle
-
-	raffle = "tresbien"
+	
 
 	return render(request, 'raffle_form/tresbien_raffleform.html')
 
-def preferences_tres_bien(request):
 
-	global firstname,lastname,email,phone,address,city,zipcode,state,country
+def thankyou_tres_bien(request):
 
+	raffle = "tresbien"
+	firstname = request.POST.get('firstname')
+	lastname = request.POST.get('lastname')
+	email = request.POST.get('email')
+	phone = request.POST.get('phone')
+	address = request.POST.get('address')
+	city = request.POST.get('city')
+	zipcode = request.POST.get('zipcode')
+	state = request.POST.get('state')
+	country = request.POST.get('country')
+	shoe_size = request.POST.get('shoe_size')
+	api_key = request.POST.get('api_key')
+	threads = request.POST.get('threads')
+
+	raffle_entry = Raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		phone=phone,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+	
+	raffle_entry.save()
+
+	initiate.raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		phone=phone,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+
+	return render(request, 'raffle_form/tresbien_thankyou.html')
+
+
+
+
+
+# afewstore views
+def profile_a_few_store(request):
+
+	return render(request, 'raffle_form/afewstore_raffleform.html')
+
+
+def thankyou_a_few_store(request):
+	
+	raffle = "afewstore"
+	firstname = request.POST.get('firstname')
+	lastname = request.POST.get('lastname')
+	email = request.POST.get('email')
+	address = request.POST.get('address')
+	zipcode = request.POST.get('zipcode')
+	city = request.POST.get('city')
+	state = request.POST.get('state')
+	country = request.POST.get('country')
+	shoe_size = request.POST.get('shoe_size')
+	api_key = request.POST.get('api_key')
+	threads = request.POST.get('threads')
+
+	raffle_entry = Raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+
+	raffle_entry.save()
+	
+	initiate.raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+	
+	return render(request, 'raffle_form/afewstore_thankyou.html')
+
+
+
+
+
+# jdsports views
+def profile_jd_sports(request):
+
+	return render(request, 'raffle_form/jdsports_raffleform.html')
+
+
+def thankyou_jd_sports(request):
+	
+	raffle = "jdsports"
+	firstname = request.POST.get('firstname')
+	lastname = request.POST.get('lastname')
+	email = request.POST.get('email')
+	paypal_email = request.POST.get('paypal_email')
+	phone_prefix = request.POST.get('phone_prefix')
+	phone = request.POST.get('phone')
+	street1 = request.POST.get('street1')
+	street2 = request.POST.get('street2')
+	city = request.POST.get('city')
+	zipcode = request.POST.get('zipcode')
+	county = request.POST.get('county')
+	shoe_size = request.POST.get('shoe_size')
+	threads = request.POST.get('threads')
+
+	raffle_entry = Raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		paypal_email=paypal_email,
+		phone_prefix=phone_prefix,
+		phone=phone,
+		street1=street1,
+		street2=street2,
+		city=city,
+		zipcode=zipcode,
+		county=county,
+		shoe_size=shoe_size,
+		threads=threads)
+
+	raffle_entry.save()
+
+	initiate.raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		paypal_email=paypal_email,
+		phone_prefix=phone_prefix,
+		phone=phone,
+		street1=street1,
+		street2=street2,
+		city=city,
+		zipcode=zipcode,
+		county=county,
+		shoe_size=shoe_size,
+		threads=threads)
+	
+	return render(request, 'raffle_form/jdsports_thankyou.html')
+
+
+
+
+
+# shizoparis views	
+def profile_shinzo_paris(request):
+	
+	return render(request, 'raffle_form/shinzoparis_raffleform.html')
+
+
+def thankyou_shinzo_paris(request):
+	
+	raffle = "shinzoparis"
 	firstname = request.POST.get('firstname')
 	lastname = request.POST.get('lastname')
 	email = request.POST.get('email')
@@ -57,17 +221,27 @@ def preferences_tres_bien(request):
 	zipcode = request.POST.get('zipcode')
 	state = request.POST.get('state')
 	country = request.POST.get('country')
-
-	return render(request, 'raffle_form/tresbien_preferences.html')
-
-def thankyou_tres_bien(request):
-
-	global shoe_size,threads,api_key
-
 	shoe_size = request.POST.get('shoe_size')
 	api_key = request.POST.get('api_key')
 	threads = request.POST.get('threads')
 
+	raffle_entry = Raffle(
+		raffle=raffle,
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		instagram=instagram,
+		phone=phone,
+		address=address,
+		city=city,
+		zipcode=zipcode,
+		state=state,
+		country=country,
+		shoe_size=shoe_size,
+		api_key=api_key,
+		threads=threads)
+	
+	raffle_entry.save()
 
 	initiate.raffle(
 		raffle=raffle,
@@ -84,153 +258,62 @@ def thankyou_tres_bien(request):
 		shoe_size=shoe_size,
 		api_key=api_key,
 		threads=threads)
+
+	return render(request, 'raffle_form/shinzoparis_thankyou.html')
+
+
+
+
+
+# chmielna20 views	
+def profile_chmielna20(request):
+
+	return render(request, 'raffle_form/chmielna20_raffleform.html')
+
+
+def thankyou_chmielna20(request):
 	
-
-	return render(request, 'raffle_form/tresbien_thankyou.html')
-
-
-# afewstore views
-def profile_a_few_store(request):
-
-	global raffle
-
-	raffle = "afewstore"
-
-	return render(request, 'raffle_form/afewstore_raffleform.html')
-
-def preferences_a_few_store(request):
-
-	global firstname,lastname,email,phone,address,city,zipcode,state,country
-
+	raffle = "chmielna20"
 	firstname = request.POST.get('firstname')
 	lastname = request.POST.get('lastname')
 	email = request.POST.get('email')
-	address = request.POST.get('address')
-	zipcode = request.POST.get('zipcode')
+	phone_prefix = request.POST.get('phone_prefix')
+	phone = request.POST.get('phone')
+	dob = request.POST.get('dob') 
 	city = request.POST.get('city')
-	state = request.POST.get('state')
 	country = request.POST.get('country')
-
-	return render(request, 'raffle_form/afewstore_preferences.html')
-
-def thankyou_a_few_store(request):
-
-	global shoe_size,threads,api_key
-
 	shoe_size = request.POST.get('shoe_size')
 	api_key = request.POST.get('api_key')
 	threads = request.POST.get('threads')
-
-
-	initiate.raffle(
+	print("collecting chmielna20 details")
+	raffle_entry = Raffle(
 		raffle=raffle,
 		firstname=firstname,
 		lastname=lastname,
 		email=email,
-		address=address,
+		phone_prefix=phone_prefix,
+		phone=phone,
+		dob=dob,
 		city=city,
-		zipcode=zipcode,
-		state=state,
 		country=country,
 		shoe_size=shoe_size,
 		api_key=api_key,
 		threads=threads)
 	
-
-	return render(request, 'raffle_form/afewstore_thankyou.html')
-
-# jdsports views
-def profile_jd_sports(request):
-
-	global raffle
-
-	raffle = "jdsports"
-
-	return render(request, 'raffle_form/jdsports_raffleform.html')
-
-def preferences_jd_sports(request):
-
-	global firstname,lastname,email,paypal_email,phone_prefix,phone,street1,street2,city,zipcode,county
-
-	firstname = request.POST.get('firstname')
-	lastname = request.POST.get('lastname')
-	email = request.POST.get('email')
-	paypal_email = request.POST.get('paypal_email')
-	street1 = request.POST.get('street1')
-	street2 = request.POST.get('street2')
-	city = request.POST.get('city')
-	zipcode = request.POST.get('zipcode')
-	county = request.POST.get('county')
-
-	return render(request, 'raffle_form/jdsports_preferences.html')
-
-def thankyou_jd_sports(request):
-
-	global shoe_size,threads
-
-	shoe_size = request.POST.get('shoe_size')
-	threads = request.POST.get('threads')
-
-
+	raffle_entry.save()
+	print("saving chmielna20 object")
 	initiate.raffle(
 		raffle=raffle,
 		firstname=firstname,
 		lastname=lastname,
 		email=email,
-		paypal_email=payment_email,
 		phone_prefix=phone_prefix,
 		phone=phone,
-		street1=street1,
-		street2=street2,
+		dob=dob,
 		city=city,
-		zipcode=zipcode,
-		county=county,
+		country=country,
 		shoe_size=shoe_size,
+		api_key=api_key,
 		threads=threads)
-	
-
-	return render(request, 'raffle_form/jdsports_thankyou.html')
-
-
-def preferences(request):
-
-	global firstname,lastname,email,phone,address,city,zipcode,state,country
-
-	firstname = request.POST.get('firstname')
-	lastname = request.POST.get('lastname')
-	email = request.POST.get('email')
-	phone = request.POST.get('phone')
-	address = request.POST.get('address')
-	city = request.POST.get('city')
-	zipcode = request.POST.get('zipcode')
-	state = request.POST.get('state')
-	country = request.POST.get('country')
-
-
-	return render(request, 'raffle_form/preferences.html')
-
-def payment(request):
-
-	global raffle,threads,api_key
-
-	raffle = request.POST.get('raffle')
-	api_key = request.POST.get('api_key')
-	threads = request.POST.get('threads')
-
-	return render(request, 'raffle_form/payment.html')
-
-def thankyou(request):
-
-	global cardname,cardnumber,cc_exp_mo,cc_exp_yr,cvc
-
-	cardname = request.POST.get('cardname')
-	cardnumber = request.POST.get('cardnumber')
-	cc_exp_mo = request.POST.get('cc_exp_mo')
-	cc_exp_yr = request.POST.get('cc_exp_yr')
-	cvc = request.POST.get('cvc')
-
-
-	initiate.raffle(firstname,lastname,email,phone,address,city,zipcode,state,country,raffle,threads,api_key,cardname,cardnumber,cc_exp_mo,cc_exp_yr,cvc)
-	
-
-	return render(request, 'raffle_form/thankyou.html')
+	print("call sent to initiate")
+	return render(request, 'raffle_form/chmielna20_thankyou.html')
